@@ -79,11 +79,18 @@ body * {
   left: 0; /*deixando a direita*/
   z-index: 1; /*coloca o buton no andar de cima */
   transform: translateY(-50%); /*movimenta em Y */
+  animation: slide-back 0.4s forwards; /*animação do botão */
+}
+#switch button:hover {
+  /*animação de sombra no botao*/
+  outline: 8px solid var(--highlight--color);
 }
 .light #switch button {
-  right: 0;
-  left: initial;
+  /*animando o botão */
+  animation: slide-in 0.4s forwards;
+  /* forwards: mantem o estado final da animação */
 }
+
 #switch span {
   display: block; /*span té inline, o que n aceita o width*/
   width: 64px;
@@ -157,5 +164,23 @@ footer {
   }
   .light {
     --bg--url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+/*maneiras de animar o botão */
+/*animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
