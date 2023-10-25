@@ -40,7 +40,8 @@ body * {
   color: var(--text-color);
 }
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /* geralmente n se define height*/
   margin: 56px auto 0px; /* caixa ao centro*/
   padding: 0 24px;
