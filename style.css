@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /*variaveis sempre usadas*/
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight--color: rgba(255, 255, 255, 0.2);
+  --switch--bg-url: url(./assets/MoonStars.svg);
+}
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight--color: rgba(0, 0, 0, 0.1);
+  --switch--bg-url: url(./assets/Sun.svg);
+}
+body {
+  /* background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  /* top relacionado ao eixo Y, center com relação a X */
+  /* background-position: top center; */
+  /* Cobrir toda área visível */
+  /* background-size: cover; */
+
+  /* agrupando tudo */
+  /* background: color image repeat position/size */
+
+  background: var(--bg-url) no-repeat top center/cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+#container {
+  width: 360px;
+  /* geralmente n se define height*/
+  margin: 56px auto 0px; /* caixa ao centro*/
+  padding: 0 24px;
+}
+#profile {
+  /*alinhando objetos inline ao centro*/
+  text-align: center;
+  padding: 24px;
+}
+#profile img {
+  width: 112px;
+  /* em elemente inline n consigo usar o margin auto*/
+  /* todos elementos em inline permite o alinhamento ao centro dos seus pais */
+}
+#profile p {
+  margin-top: 8px;
+  font-weight: 500; /*negrito da fonte*/
+  line-height: 24px; /* 150% */ /*altura da linha*/
+}
+#switch {
+  /*uma div tem naturalmente displauy block*/
+  position: relative; /*melhor maneira de usar o position absolute da div filha */
+  width: 64px; /*mesmo tamanho do span para ficar correto*/
+  margin: 4px auto; /*centralizar com display block */
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch--bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%; /*deixar redondo*/
+  position: absolute; /*coloca o elemento buton sobreposto com o span e da permissão de usar top, bottom, left,right */
+  top: 50%; /*alinha posicionamento absoluto junto com o transform translate*/
+  left: 0; /*deixando a direita*/
+  z-index: 1; /*coloca o buton no andar de cima */
+  transform: translateY(-50%); /*movimenta em Y */
+}
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+#switch span {
+  display: block; /*span té inline, o que n aceita o width*/
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+/* links */
+ul {
+  list-style: none;
+  margin: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+ul li a {
+  /*tag a é inline */
+  display: flex; /*tamanhomtotaldacaixa*/
+  justify-content: center; /*centraliza os objetos do flex */
+  align-items: center; /*alinha ao centro da linha virtual feita pelo display flex */
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.2s; /* efeito da animação */
+  padding: 24px 0;
+}
+/* pseudo-selector */
+
+ul li a:hover {
+  /*animação*/
+  border: 1.5px solid var(--text-color);
+  background: var(--surface-color-hover);
+}
+/*social links */
+#social-links {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+  align-items: center;
+}
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+#social-links a:hover {
+  background: var(--highlight--color);
+}
+footer {
+  padding: 24px 0;
+  text-align: center; /*textos ao centro */
+  font-size: 14px;
+}
